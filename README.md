@@ -7,7 +7,8 @@ For testing this Web Service I used Postman, which is a Platform for API Develop
 There are three different requests that this Web Service can offer. The first is a GET method that displays all the information available for the vessels. 
 When running the project locally, the URL is: `http://localhost:8080/vesselInformation`
 And this should be the response: 
-	```
+
+```
 {
         "id": 1,
         "vessel": {
@@ -24,7 +25,7 @@ And this should be the response:
 ```
 
 The second is a POST method and here is an example of data to POST: 
-	```
+```
     {
         "vessel": {
             "name": "Titanic"
@@ -36,10 +37,11 @@ The second is a POST method and here is an example of data to POST:
             "speed": 30.21
         }
     }
-    ```
+```
     
  And the response should look something like this: 
- 	```
+ 
+```
  {
     "id": 2,
     "vessel": {
@@ -53,7 +55,7 @@ The second is a POST method and here is an example of data to POST:
         "speed": 30.21
     }
 }
-	```
+```
   
 As you can see the web service makes two new parameters: a new unique id, and a receivedDate which diplays the precise date that this information is received. 
 
