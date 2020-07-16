@@ -58,7 +58,7 @@ The second is a POST method and here is an example of data to POST:
 If you check the GET method on `http://localhost:8080/vesselInformation` you can see that the new data has been added to the list. 
 As you can see the web service makes two new parameters: a new unique id, and a receivedDate which diplays the precise date that this information is received. 
 
-Finally, you can use this unique Id to search for specific vessel information, with the URL `http://localhost:8080/vesselInformation/{id}`, if you want to :smiley
+Finally, you can use this unique Id to search for specific vessel information, with the URL `http://localhost:8080/vesselInformation/{id}`, if you want to :smiley:
 
 
 
