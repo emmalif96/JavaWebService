@@ -2,7 +2,7 @@
 
 **Here is a simple Web Service made in Java Spring for Vessel Information**
 
-For testing this Web Service I used Postman, which is a Platform for API Development that is easy to use. If you aren't familiar with Postman you can find more information https://www.postman.com/
+For testing this Web Service I used Postman, which is a Platform for API Development that is easy to use. If you aren't familiar with Postman you can find more information here https://www.postman.com/
 
 There are three different requests that this Web Service can offer. The first is a GET method that displays all the information available for the vessels. 
 When running the project locally, the URL is: `http://localhost:8080/vesselInformation`
