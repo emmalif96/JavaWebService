@@ -8,14 +8,22 @@ import javax.validation.constraints.Past;
 //Object for Position
 public class Position {
 
+	// the date of the position information
 	@Past
 	private Date date;
 
+	// the date of receiving the information
 	private Date receivedDate;
+
+	// latitude in radians
 	@NotNull
 	private double latitude;
+
+	// longitude in radians
 	@NotNull
 	private double longitude;
+
+	// speed in knots
 	@NotNull
 	private double speed;
 

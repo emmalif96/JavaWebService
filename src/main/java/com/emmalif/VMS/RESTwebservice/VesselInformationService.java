@@ -11,45 +11,55 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Component
 public class VesselInformationService {
 
+	// A list to store vesselInformation objects
 	private static List<VesselInformation> vesselInformationList = new ArrayList<>();
 
-	private static int vesselCounter = 1;
-	//Putting vessel information to have an example
+	// Insert vessel information to have an example
 	static {
 		Vessel vessel = new Vessel("ARCADIA", "Bermuda");
-		Position position = new Position(new Date(), 16.871311, 96.199379, 37.04);
-		vesselInformationList.add(new VesselInformation(1, vessel, position));
+		Position position = new Position(new Date(), 0.890117918517108, 0.40142572795869574, 27.04);
+		vesselInformationList.add(new VesselInformation(vessel, position));
 	}
 
-	//The method for finding all the vessel information
+	// returns the stored list of VesselInformation objects
 	public List<VesselInformation> findAll() {
 		return vesselInformationList;
 	}
-	//A method for setting the Information into the List
+	// A method for setting the Information into the List
 	public static void setVesselInformationList(List<VesselInformation> vesselInformationList) {
 		VesselInformationService.vesselInformationList = vesselInformationList;
 	}
 
-	//The method for saving(Posting) new data into the List
+	// The method for saving(Posting) new data into the List
 	@ResponseBody
 	public VesselInformation save(VesselInformation vesselInformation) {
-		//Making a unique id for the new data
-		if (vesselInformation.getId() == null) {
-			vesselInformation.setId(++vesselCounter);
-		}
-		//vesselInformation.getVessel().getCountry() remove("country");
+		// format the information
+		formatVesselInformation(vesselInformation);
+		// add to storage
 		vesselInformationList.add(vesselInformation);
+		// return the object
 		return vesselInformation;
 	}
 
-	//The method that displays appropriate vessel information according to the id that is given
-	public VesselInformation findOne(int id) {
-		for (VesselInformation vesselInformation : vesselInformationList) {
-			if (vesselInformation.getId() == id) {
-				return vesselInformation;
-			}
-		}
-		return null;
+	// Formats the VesselInformation object
+	private void formatVesselInformation(VesselInformation vesselInformation) {
+		// calculate
+		double latitudeRadians = degreesToRadians(vesselInformation.getPosition().getLatitude());
+		double longitudeRadians = degreesToRadians(vesselInformation.getPosition().getLongitude());
+		double speedMps = knotsToMps(vesselInformation.getPosition().getSpeed());
+		// set the information
+		vesselInformation.getPosition().setLatitude(latitudeRadians);
+		vesselInformation.getPosition().setLongitude(longitudeRadians);
+		vesselInformation.getPosition().setSpeed(speedMps);
 	}
 
+	// Calcules radians from degrees
+	private static double degreesToRadians(double degrees){
+		return degrees * Math.PI/180;
+	}
+
+	// Calculates Meters per Second from Knots
+	private static double knotsToMps (double knots) {
+		return knots * 0.514444;
+	}
 }

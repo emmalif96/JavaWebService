@@ -19,27 +19,16 @@ public class VesselInformationResource {
 	@Autowired
 	private VesselInformationService service;
 
-	// A method to GET all of the vessel Information
+	// A GET method for all of the vessel Information
 	@GetMapping("/vesselInformation")
 	public List<VesselInformation> retrieveAllVesselInformation() {
-
 		return service.findAll();
 	}
 
-	//A method to search(GET) for one specific Vessel and all of it's information
-	@GetMapping("/vesselInformation/{id}")
-	public VesselInformation retrieveVesselInformation(@PathVariable int id) {
-		VesselInformation vesselInformation = service.findOne(id);
-		if (vesselInformation == null) {
-			//Error handling if no vessel has that specific Id
-			throw new VesselInformationNotFoundException("id - " + id);
-		}
-		return service.findOne(id);
-	}
-
-	//A method to POST information about a vessel
+	// A POST method to post information about a vessel
 	@PostMapping("/vesselInformation")
 	public ResponseEntity<Object> createVesselInformation(@Valid @RequestBody VesselInformation vesselInformation) {
+		// appends the information to the list
 		VesselInformation savedVesselInformation = service.save(vesselInformation);
 
 		// This is for the status: 201 Created Response Header and to show the ResponseBody
