@@ -4,7 +4,7 @@
 
 For testing this Web Service I used Postman, which is a Platform for API Development that is easy to use. If you aren't familiar with Postman you can find more information here https://www.postman.com/
 
-There are three different requests that this Web Service can offer. The first is a GET method that displays all the information available for the vessels. 
+There are two different requests that this Web Service can offer. The first is a GET method that displays all the information available for the vessels. 
 When running the project locally, the URL is: `http://localhost:8080/vesselInformation`
 And this should be the response: 
 
@@ -41,24 +41,24 @@ The second is a POST method and here is an example of data to POST:
  And the response should look something like this: 
  
 ```
- {
-    "id": 2,
-    "vessel": {
-        "name": "Titanic"
-    },
-    "position": {
-        "date": "1911-05-31T18:08:03.927+00:00",
-        "receivedDate": "2020-07-16T11:24:13.143+00:00",
-        "latitude": 54.526,
-        "longitude": 105.2551,
-        "speed": 30.21
+    {
+        "vessel": {
+            "name": "Titanic"
+        },
+        "position": {
+            "date": "1911-05-31T18:08:03.927+00:00",
+            "receivedDate": "2020-07-21T10:14:06.991+00:00",
+            "latitude": 0.9516582279424282,
+            "longitude": 1.8370480495158836,
+            "speed": 15.541353240000001
+        }
     }
 }
 ```
 If you check the GET method on `http://localhost:8080/vesselInformation` you can see that the new data has been added to the list. 
-As you can see the web service makes two new parameters: a new unique id, and a receivedDate which diplays the precise date that this information is received. 
+As you can see the web service creates a new parameter a receivedDate which diplays the precise date that this information is received. The webservice formats latitude and longitude to radians instead of degrees, and formats the speed from knots to meters per second. 
 
-Finally, you can use this unique Id to search for specific vessel information, with the URL `http://localhost:8080/vesselInformation/{id}`, if you want to :smiley:
+:smiley:
 
 
 
