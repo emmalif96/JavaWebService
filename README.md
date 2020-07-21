@@ -10,7 +10,6 @@ And this should be the response:
 
 ```
 {
-        "id": 1,
         "vessel": {
             "name": "ARCADIA"
         },
